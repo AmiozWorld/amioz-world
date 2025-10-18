@@ -125,6 +125,60 @@ body {
       gap: 20px;
     }
 
+/* ---------------------------
+   📱 Mobile Responsive Design
+---------------------------- */
+@media (max-width: 768px) {
+  /* Stack products vertically */
+  section#products {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+  }
+
+  .product {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+
+  .mini-slider {
+    height: 200px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mini-slider {
+    height: 180px;
+  }
+
+  h2 {
+    font-size: 15px;
+  }
+
+  p {
+    font-size: 13px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+}
+
+
     .product {
       background: linear-gradient(160deg, #fffaf5, #f7ede2);
       border-radius: 18px;
