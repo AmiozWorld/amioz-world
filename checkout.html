@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout - AMIO'Z WORLD</title>
+    
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CORE LAYOUT STYLES FOR SIDEBAR --- */
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #3e2723;
+            background: linear-gradient(135deg, #fff8f0, #f8efe6, #f5e4d7);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            display: flex; 
+            min-height: 100vh;
+        }
+    
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    
+        /* Sidebar (Header) */
+        header {
+            background: linear-gradient(180deg, #6d4c41, #8d6e63, #a1887f);
+            color: #fff;
+            width: 230px; /* Key sidebar width */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 30px 20px;
+            box-shadow: 4px 0 15px rgba(0, 0, 0, 0.25);
+            position: fixed; /* Key for fixed sidebar */
+            left: 0;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-weight: 800;
+            font-size: 30px;
+            margin-bottom: 50px;
+        }
+    
+        nav {
+            display: flex;
+            flex-direction: column; 
+            gap: 20px;
+        }
+    
+        nav a {
+            color: #fff8f0;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+    
+        nav a:hover {
+            color: #ffe0b2;
+        }
+    
+        /* Main Content Area - CRUCIAL FIX HERE */
+        main {
+            margin-left: 270px; /* <-- Pushes content past the sidebar */
+            padding: 40px;
+            flex: 1;
+            width: 100%; 
+        }
+    
+        /* --- CHECKOUT SPECIFIC STYLES --- */
+        .checkout-container {
+            max-width: 900px; /* Adjusted max-width for better centering */
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+    
+        h1 {
+            color: #6d4c41;
+            width: 100%;
+            text-align: left;
+            margin-top: 0;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #d7ccc8;
+        }
+    
+        .cart-items-container {
+            flex: 2; 
+            min-width: 55%;
+        }
+        
+        .cart-summary {
+            flex: 1; 
+            min-width: 300px;
+            background-color: #f7f7f7;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 20px;
+        }
+    
+        .cart-summary h3 {
+            color: #6d4c41;
+            border-bottom: 1px solid #d7ccc8;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        /* ADDED: Styling for summary paragraphs */
+        .cart-summary p {
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        /* ADDED: Styling for the Total row */
+        .cart-summary .total {
+            font-size: 20px;
+            font-weight: bold;
+            color: #6d4c41;
+            border-top: 1px solid #b08968;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+    
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px dashed #d7ccc8;
+        }
+        .item-name {
+            font-weight: 600;
+            color: #4e342e;
+        }
+    
+        input[type="number"] {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+        }
+    
+        #checkout-button {
+            background: linear-gradient(90deg, #a1887f, #795548);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.3s ease;
+            width: 100%; 
+            margin-top: 20px;
+        }
+    
+        #checkout-button:hover:not(:disabled) {
+            background: linear-gradient(90deg, #8d6e63, #5d4037);
+        }
+        
+        #checkout-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">AMIO'Z WORLD</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+
+            <a href="checkout.html" style="margin-top: 15px; text-decoration: none; color: white;">
+                <i class="fas fa-shopping-cart"></i> 
+                <span id="cart-count" style="background-color: #ffe0b2; color: #6d4c41; border-radius: 50%; padding: 2px 7px; font-size: 14px; position: relative; top: -10px; left: -5px; font-weight: bold;">0</span>
+            </a>
+        </nav>
+    </header>
+
+    <main> 
+        <div class="checkout-container">
+            <h1>Your Shopping Cart</h1>
+            
+            <div id="cart-items-container" class="cart-items-container">
+                <div class="empty-cart-message">Loading cart...</div>
+            </div>
+
+            <div class="cart-summary">
+                <h3>Order Summary</h3>
+                <p>Subtotal: <span id="cart-subtotal">₹0.00</span></p>
+                <p>Shipping: <span id="cart-shipping">₹0.00</span></p>
+                <hr style="border: 0; border-top: 1px solid #d7ccc8; margin: 10px 0;"/>
+                <p class="total">Total: <span id="cart-total">₹0.00</span></p>
+
+                <button id="checkout-button" onclick="payNow()">Proceed to Payment</button>
+            </div>
+        </div>
+    </main> 
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="script.js"></script> 
+    </body>
+    </html>
