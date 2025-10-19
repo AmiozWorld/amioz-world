@@ -23,9 +23,10 @@
 
 
         main {
-            margin-left: 270px; /* Increased margin slightly to prevent content touching the desktop sidebar */
+            margin-left: 270px; 
             flex: 1;
             padding: 40px 20px;
+            box-sizing: border-box; /* Important for full width flow */
         }
 
 
@@ -47,7 +48,7 @@
         padding: 30px 20px;
         box-shadow: 4px 0 15px rgba(0, 0, 0, 0.25);
         border-radius: 0 20px 20px 0;
-        position: fixed; /* Desktop Sidebar */
+        position: fixed; /* This is what causes the overlap on mobile */
         left: 0;
         top: 0;
         transition: all 0.4s ease;
@@ -171,15 +172,21 @@
         /* === MOBILE RESPONSIVENESS FIX (768px) === */
         /* ======================================= */
         @media(max-width: 768px) {
+            body {
+                /* Ensures header and main stack vertically */
+                flex-direction: column; 
+            }
+            
             /* Fixes the Header (Sidebar) to stack on top */
             header {
-                position: relative !important; /* Overrides the 'position: fixed' */
+                position: relative !important; /* Overrides the 'fixed' positioning */
                 width: 100% !important; 
-                min-height: auto !important;
+                min-height: auto !important; /* Lets it size to its content */
                 border-radius: 0;
-                /* New layout for mobile header: logo on left, links/cart on right */
+                box-sizing: border-box; /* Prevents padding from breaking width */
+                /* New layout for mobile header */
                 flex-direction: row; 
-                flex-wrap: wrap; /* Allows nav to wrap below logo if needed */
+                flex-wrap: wrap; 
                 justify-content: space-between;
                 align-items: center;
                 padding: 20px;
@@ -190,29 +197,28 @@
                 font-size: 24px;
             }
 
-            nav {
-                flex-direction: row; /* Horizontal links */
-                flex-wrap: wrap; 
-                gap: 10px;
-                margin-top: 0;
+            nav { 
+                margin-top: 10px; 
+                flex-direction: row; /* Makes nav links horizontal on mobile */
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%; /* forces nav to take full width below logo */
             }
             
             /* Fixes the Main Content overlap */
             main {
-                margin-left: 0 !important; /* Removes the desktop sidebar offset */
-                width: 100%; 
+                margin-left: 0 !important; /* Removes the sidebar margin */
+                width: 100%;
                 padding: 20px 10px;
-                box-sizing: border-box; 
             }
             
-            /* Target the search input's inline style on mobile */
+            /* CRITICAL FIX: Overrides the inline style on the search bar */
             #productSearch {
-                width: 90% !important; 
+                width: 90% !important; /* Forces a smaller width on mobile */
                 box-sizing: border-box;
                 padding: 15px 20px !important;
             }
             
-            /* Make product cards full width on mobile */
             .product { 
                 width: 90%; 
             }
@@ -243,7 +249,7 @@
                 type="text" 
                 id="productSearch" 
                 onkeyup="searchProducts()" 
-                placeholder=" 🔍 Search your Chappal..." 
+                placeholder=" Search your Chappal..." 
                 style="
                     width: 450px; 
                     padding: 20px 15px; 
