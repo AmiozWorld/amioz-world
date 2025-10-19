@@ -1,446 +1,449 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Authentic Kolhapuri Chappals</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentic Kolhapuri Chappals</title>
 
-  <!-- Razorpay Script -->
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
-  <!-- Font Awesome CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
 
-  
-  <style>
- html {
-  scroll-behavior: smooth;
+    <style>
+/* ---------------------------------------------------------------------------------- */
+/* NOTE: The 'background: url('photo/bg-texture.jpg')' path has been removed below.  */
+/* If you have a file named 'bg-texture.jpg' in the root, change it to:             */
+/* background: url('bg-texture.jpg') center/cover no-repeat;                        */
+/* If that file is missing, the code below is safest to avoid errors.               */
+/* ---------------------------------------------------------------------------------- */
+html {
+    scroll-behavior: smooth;
 }
 body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
-  color: #3e2723;
-  background: linear-gradient(135deg, #fff8f0, #f8efe6, #f5e4d7);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
-  display: flex;
-  min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #3e2723;
+    background: linear-gradient(135deg, #fff8f0, #f8efe6, #f5e4d7);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    display: flex;
+    min-height: 100vh;
 }
 @keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Sidebar layout */
 header {
-  background: linear-gradient(180deg, #6d4c41, #8d6e63, #a1887f);
-  color: #fff;
-  width: 230px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 30px 20px;
-  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.25);
-  border-radius: 0 20px 20px 0;
-  position: fixed;
-  left: 0;
-  top: 0;
-  transition: all 0.4s ease;
+    background: linear-gradient(180deg, #6d4c41, #8d6e63, #a1887f);
+    color: #fff;
+    width: 230px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 30px 20px;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.25);
+    border-radius: 0 20px 20px 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: all 0.4s ease;
 }
 header:hover {
-  box-shadow: 6px 0 25px rgba(0, 0, 0, 0.3);
+    box-shadow: 6px 0 25px rgba(0, 0, 0, 0.3);
 }
 
 .logo {
-  font-size: 30px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  margin-bottom: 50px;
-  text-align: left;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
-  transition: color 0.3s ease;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 50px;
+    text-align: left;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+    transition: color 0.3s ease;
 }
 .logo:hover {
-  color: #ffe0b2;
+    color: #ffe0b2;
 }
 
 nav {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 nav a {
-  color: #fff8f0;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 18px;
-  transition: all 0.3s ease;
-  position: relative;
+    color: #fff8f0;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    position: relative;
 }
 nav a::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #ffe0b2;
-  transition: width 0.3s ease;
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #ffe0b2;
+    transition: width 0.3s ease;
 }
 nav a:hover::after {
-  width: 100%;
+    width: 100%;
 }
 nav a:hover {
-  color: #ffe0b2;
-  transform: translateX(6px);
+    color: #ffe0b2;
+    transform: translateX(6px);
 }
 
 /* Content area next to sidebar */
 main {
-  margin-left: 250px;
-  padding: 40px;
-  flex: 1;
+    margin-left: 250px;
+    padding: 40px;
+    flex: 1;
 }
 
 /* Hero section */
 #home {
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 #home::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url('photo/bg-texture.jpg') center/cover no-repeat;
-  opacity: 0.08;
-  z-index: -1;
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* Corrected: Removed folder path, assuming bg-texture.jpg is missing or needs to be in root */
+    background: none; /* Changed from url('photo/bg-texture.jpg') to prevent error */
+    opacity: 0.08;
+    z-index: -1;
 }
 
 #home h2 {
-  font-size: 42px;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #4e342e;
-  animation: slideIn 2s ease, glowText 4s ease-in-out infinite alternate;
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #4e342e;
+    animation: slideIn 2s ease, glowText 4s ease-in-out infinite alternate;
 }
 @keyframes slideIn {
-  0% { opacity: 0; transform: translateY(-40px); }
-  100% { opacity: 1; transform: translateY(0); }
+    0% { opacity: 0; transform: translateY(-40px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 @keyframes glowText {
-  0% { text-shadow: 0 0 10px rgba(165, 118, 92, 0.3); }
-  100% { text-shadow: 0 0 25px rgba(121, 85, 72, 0.7); }
+    0% { text-shadow: 0 0 10px rgba(165, 118, 92, 0.3); }
+    100% { text-shadow: 0 0 25px rgba(121, 85, 72, 0.7); }
 }
 
 .tagline {
-  font-size: 20px;
-  color: #6f4e37;
-  margin-top: -5px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  animation: fadeIn 2.5s ease;
+    font-size: 20px;
+    color: #6f4e37;
+    margin-top: -5px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    animation: fadeIn 2.5s ease;
 }
 @keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 .cta-btn {
-  background: linear-gradient(90deg, #a1887f, #795548);
-  color: #fff;
-  padding: 15px 30px;
-  border: none;
-  border-radius: 12px;
-  font-size: 18px;
-  font-weight: 700;
-  margin-top: 25px;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(121, 85, 72, 0.3);
-  transition: all 0.3s ease;
+    background: linear-gradient(90deg, #a1887f, #795548);
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(121, 85, 72, 0.3);
+    transition: all 0.3s ease;
 }
 .cta-btn:hover {
-  background: linear-gradient(90deg, #8d6e63, #5d4037);
-  transform: scale(1.1);
-  box-shadow: 0 8px 25px rgba(93, 64, 55, 0.4);
+    background: linear-gradient(90deg, #8d6e63, #5d4037);
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(93, 64, 55, 0.4);
 }
 
 /* Search bar */
 .search-bar {
-  text-align: center;
-  margin: 30px 0;
+    text-align: center;
+    margin: 30px 0;
 }
 .search-bar input {
-  width: 480px;
-  padding: 18px 20px;
-  border-radius: 30px;
-  border: 2px solid #b08968;
-  outline: none;
-  font-size: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: 0.3s;
+    width: 480px;
+    padding: 18px 20px;
+    border-radius: 30px;
+    border: 2px solid #b08968;
+    outline: none;
+    font-size: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: 0.3s;
 }
 .search-bar input:focus {
-  border-color: #6f4e37;
-  box-shadow: 0 6px 18px rgba(111,78,55,0.3);
-  transform: scale(1.03);
+    border-color: #6f4e37;
+    box-shadow: 0 6px 18px rgba(111,78,55,0.3);
+    transform: scale(1.03);
 }
 
 /* Product cards */
 .container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 20px;
-  gap: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
+    gap: 25px;
 }
 .product {
-  background: linear-gradient(160deg, #fffaf5, #f7ede2);
-  border-radius: 18px;
-  padding: 20px;
-  width: 260px;
-  text-align: center;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  opacity: 0;
-  transform: translateY(50px);
-  position: relative;
-  overflow: hidden;
+    background: linear-gradient(160deg, #fffaf5, #f7ede2);
+    border-radius: 18px;
+    padding: 20px;
+    width: 260px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(50px);
+    position: relative;
+    overflow: hidden;
 }
 .product:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
 }
 .product:hover::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(255,255,255,0.2), transparent 70%);
-  opacity: 0.7;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.2), transparent 70%);
+    opacity: 0.7;
 }
 .product img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 14px;
-  transition: transform 0.5s ease;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 14px;
+    transition: transform 0.5s ease;
 }
 .product:hover img {
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 .product h2 {
-  font-size: 18px;
-  margin: 12px 0;
-  color: #4e342e;
+    font-size: 18px;
+    margin: 12px 0;
+    color: #4e342e;
 }
 .product p {
-  margin: 5px 0;
-  font-weight: bold;
-  color: #6d4c41;
+    margin: 5px 0;
+    font-weight: bold;
+    color: #6d4c41;
 }
 button {
-  background: linear-gradient(90deg, #a1887f, #795548);
-  color: #fff;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 600;
-  transition: all 0.3s ease;
+    background: linear-gradient(90deg, #a1887f, #795548);
+    color: #fff;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 button:hover {
-  background: linear-gradient(90deg, #8d6e63, #5d4037);
-  transform: scale(1.08);
-  box-shadow: 0 4px 15px rgba(93, 64, 55, 0.3);
+    background: linear-gradient(90deg, #8d6e63, #5d4037);
+    transform: scale(1.08);
+    box-shadow: 0 4px 15px rgba(93, 64, 55, 0.3);
 }
 
 /* Contact Section */
 .contact {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 18px;
-  font-size: 18px;
-  color: #4e342e;
-  background: #fdf6ee;
-  padding: 25px;
-  border-top: 2px solid #d7ccc8;
-  border-radius: 16px;
-  box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    font-size: 18px;
+    color: #4e342e;
+    background: #fdf6ee;
+    padding: 25px;
+    border-top: 2px solid #d7ccc8;
+    border-radius: 16px;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
 }
 .contact a {
-  text-decoration: none;
-  color: #6d4c41;
-  font-size: 26px;
-  transition: transform 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+    color: #6d4c41;
+    font-size: 26px;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 .contact a:hover {
-  color: #a1887f;
-  transform: scale(1.2);
+    color: #a1887f;
+    transform: scale(1.2);
 }
 
 /* Scroll reveal */
 .reveal {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 1s ease;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease;
 }
 .reveal.active {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Responsive */
 @media(max-width: 768px) {
-  header {
-    position: relative;
-    width: 100%;
-    min-height: auto;
-    border-radius: 0;
-  }
-  main {
-    margin-left: 0;
-  }
-  .search-bar input {
-    width: 90%;
-  }
+    header {
+        position: relative;
+        width: 100%;
+        min-height: auto;
+        border-radius: 0;
+    }
+    main {
+        margin-left: 0;
+    }
+    .search-bar input {
+        width: 90%;
+    }
 }
 
 
     /* Search bar */
     .search-bar {
-      text-align: center;
-      margin: 30px 0;
+        text-align: center;
+        margin: 30px 0;
     }
 
     .search-bar input {
-      width: 450px;
-      padding: 20px 15px;
-      border-radius: 25px;
-      border: 2px solid #b08968;
-      outline: none;
-      font-size: 16px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: 0.3s;
+        width: 450px;
+        padding: 20px 15px;
+        border-radius: 25px;
+        border: 2px solid #b08968;
+        outline: none;
+        font-size: 16px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        transition: 0.3s;
     }
 
     .search-bar input:focus {
-      border-color: #6f4e37;
-      box-shadow: 0 4px 15px rgba(111,78,55,0.3);
+        border-color: #6f4e37;
+        box-shadow: 0 4px 15px rgba(111,78,55,0.3);
     }
-  </style>
+    </style>
 </head>
 
 <body>
-  <header>
-    <div class="logo">AMIO'Z WORLD</div>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+    <header>
+        <div class="logo">AMIO'Z WORLD</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
 
-        <a href="checkout.html" style="margin-left: 30px; text-decoration: none; color: white;">
-            <i class="fas fa-shopping-cart"></i> 
-            <span id="cart-count" style="background-color: #ffe0b2; color: #6d4c41; border-radius: 50%; padding: 2px 7px; font-size: 14px; position: relative; top: -10px; left: -5px; font-weight: bold;">0</span>
-        </a>
-    </nav>
+            <a href="checkout.html" style="margin-left: 30px; text-decoration: none; color: white;">
+                <i class="fas fa-shopping-cart"></i> 
+                <span id="cart-count" style="background-color: #ffe0b2; color: #6d4c41; border-radius: 50%; padding: 2px 7px; font-size: 14px; position: relative; top: -10px; left: -5px; font-weight: bold;">0</span>
+            </a>
+        </nav>
 </header>
-  <main>
-    <div class="search-bar">
-      <input type="text" id="productSearch" onkeyup="searchProducts()" placeholder=" 🔍 Search your Chappal...">
-    </div>
-
-    <section id="home">
-      <h2>Har Kadam, Ek Parampara</h2>
-      <p class="tagline">Experience the heritage of Kolhapur — handcrafted with tradition and pride.</p>
-      <button class="cta-btn" onclick="window.location.href='products.html'">🛍️ Explore Collection</button>
-    </section>
-
-<img src="C:\Users\vibhawari kamble\OneDrive\Desktop\AMIOZ1.2\photo">
-
-    <section id="products">
-      <div class="container">
-        <div class="product reveal">
-          <img src="photo/chap5-6-7/chap5.jpeg" alt="Kolhapuri Chappal">
-          <h2>Paithani shaded lavendar Kolhapuri</h2>
-          <p>Price: ₹949</p>
-          <button>Add to Cart</button>
+    <main>
+        <div class="search-bar">
+            <input type="text" id="productSearch" onkeyup="searchProducts()" placeholder=" 🔍 Search your Chappal...">
         </div>
 
-        <div class="product reveal">
-          <img src="photo/chap26.jpeg" alt="Kolhapuri Chappal">
-          <h2>Veni Patha Kolhapuri </h2>
-          <p>Price: ₹969</p>
-          <button>Add to Cart</button>
-        </div>
+        <section id="home">
+            <h2>Har Kadam, Ek Parampara</h2>
+            <p class="tagline">Experience the heritage of Kolhapur — handcrafted with tradition and pride.</p>
+            <button class="cta-btn" onclick="window.location.href='products.html'">🛍️ Explore Collection</button>
+        </section>
 
-        <div class="product reveal">
-          <img src="photo/chap8-9-10/chap8.jpeg" alt="Kolhapuri Chappal">
-          <h2>Paithani tangerine Kolhapuri </h2>
-          <p>Price: ₹949</p>
-          <button>Add to Cart</button>
-        </div>
-      </div>
-    </section>
+        <section id="products">
+            <div class="container">
+                <div class="product reveal">
+                    <img src="chap5.jpeg" alt="Kolhapuri Chappal">
+                    <h2>Paithani shaded lavendar Kolhapuri</h2>
+                    <p>Price: ₹949</p>
+                    <button>Add to Cart</button>
+                </div>
 
-    <section id="contact" class="contact reveal">
-      <span>Contact Us:</span>
-      <a href="mailto:your-email@example.com" target="_blank"><i class="fas fa-envelope"></i></a>
-      <a href="https://www.instagram.com/yourusername" target="_blank"><i class="fab fa-instagram"></i></a>
-    </section>
-  </main>
+                <div class="product reveal">
+                    <img src="chap26.jpeg" alt="Kolhapuri Chappal">
+                    <h2>Veni Patha Kolhapuri </h2>
+                    <p>Price: ₹969</p>
+                    <button>Add to Cart</button>
+                </div>
 
-  <script>
-    function payNow(amount, productName) {
-      var options = {
-        "key": "rzp_test_123456789",
-        "amount": amount * 100,
-        "currency": "INR",
-        "name": "AMIO'Z WORLD",
-        "description": productName,
-        "handler": function (response) {
-          alert("✅ Payment successful! ID: " + response.razorpay_payment_id);
-        },
-        "prefill": {
-          "name": "Customer Name",
-          "email": "customer@example.com",
-          "contact": "9876543210"
-        },
-        "theme": {
-          "color": "#795548"
+                <div class="product reveal">
+                    <img src="chap8.jpeg" alt="Kolhapuri Chappal">
+                    <h2>Paithani tangerine Kolhapuri </h2>
+                    <p>Price: ₹949</p>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact reveal">
+            <span>Contact Us:</span>
+            <a href="mailto:your-email@example.com" target="_blank"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.instagram.com/yourusername" target="_blank"><i class="fab fa-instagram"></i></a>
+        </section>
+    </main>
+
+    <script>
+        function payNow(amount, productName) {
+            var options = {
+                // NOTE: YOU MUST REPLACE "rzp_test_123456789" WITH YOUR REAL, ACTIVATED TEST KEY ID
+                "key": "rzp_test_123456789", 
+                "amount": amount * 100,
+                "currency": "INR",
+                "name": "AMIO'Z WORLD",
+                "description": productName,
+                "handler": function (response) {
+                    alert("✅ Payment successful! ID: " + response.razorpay_payment_id);
+                },
+                "prefill": {
+                    "name": "Customer Name",
+                    "email": "customer@example.com",
+                    "contact": "9876543210"
+                },
+                "theme": {
+                    "color": "#795548"
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
         }
-      };
-      var rzp1 = new Razorpay(options);
-      rzp1.open();
-    }
 
-    // Scroll reveal
-    function revealElements() {
-      const reveals = document.querySelectorAll('.reveal, .product');
-      for (let i = 0; i < reveals.length; i++) {
-        const windowHeight = window.innerHeight;
-        const revealTop = reveals[i].getBoundingClientRect().top;
-        const revealPoint = 150;
-        if (revealTop < windowHeight - revealPoint) {
-          reveals[i].classList.add('active');
-        } else {
-          reveals[i].classList.remove('active');
+        // Scroll reveal
+        function revealElements() {
+            const reveals = document.querySelectorAll('.reveal, .product');
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const revealTop = reveals[i].getBoundingClientRect().top;
+                const revealPoint = 150;
+                if (revealTop < windowHeight - revealPoint) {
+                    reveals[i].classList.add('active');
+                } else {
+                    reveals[i].classList.remove('active');
+                }
+            }
         }
-      }
-    }
-    window.addEventListener('scroll', revealElements);
-    window.addEventListener('load', revealElements);
+        window.addEventListener('scroll', revealElements);
+        window.addEventListener('load', revealElements);
 
-    function searchProducts() {
-      // Future search logic can be added here
-    }
-  </script>
+        function searchProducts() {
+            // Future search logic can be added here
+        }
+    </script>
 </body>
 </html>
