@@ -18,17 +18,15 @@
             background-size: 300% 300%;
             animation: gradientMove 10s ease-in-out infinite;
             display: flex;
-            flex-direction: column;
             min-height: 100vh;
         }
 
-        /* =================================== */
-        /* ==   HERE IS THE NEW CSS RULE    == */
-        /* =================================== */
+
         main {
-            margin-left: 230px; /* This pushes your content to the right */
+            margin-left: 270px; /* Increased margin slightly to prevent content touching the desktop sidebar */
+            flex: 1;
+            padding: 40px 20px;
         }
-        /* =================================== */
 
 
         @keyframes gradientMove {
@@ -37,7 +35,7 @@
             100% { background-position: 0% 50%; }
         }
 
-    /* Sidebar layout */
+    /* Sidebar layout - DESKTOP */
     header {
         background: linear-gradient(180deg, #6d4c41, #8d6e63, #a1887f);
         color: #fff;
@@ -49,10 +47,11 @@
         padding: 30px 20px;
         box-shadow: 4px 0 15px rgba(0, 0, 0, 0.25);
         border-radius: 0 20px 20px 0;
-        position: fixed; /* This is what causes the overlap */
+        position: fixed; /* Desktop Sidebar */
         left: 0;
         top: 0;
         transition: all 0.4s ease;
+        z-index: 10;
     }
     header:hover {
         box-shadow: 6px 0 25px rgba(0, 0, 0, 0.3);
@@ -168,32 +167,54 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
-        /* =================================== */
-        /* == HERE IS THE NEW MOBILE-FIX CSS == */
-        /* =================================== */
-        @media(max-width:768px){
-            /* Makes the header stack on top instead of being fixed */
+        /* ======================================= */
+        /* === MOBILE RESPONSIVENESS FIX (768px) === */
+        /* ======================================= */
+        @media(max-width: 768px) {
+            /* Fixes the Header (Sidebar) to stack on top */
             header {
-                position: relative; /* Removes the 'fixed' positioning */
-                width: 100%;
-                min-height: auto; /* Lets it size to its content */
+                position: relative !important; /* Overrides the 'position: fixed' */
+                width: 100% !important; 
+                min-height: auto !important;
                 border-radius: 0;
-                box-sizing: border-box; /* Prevents padding from breaking width */
+                /* New layout for mobile header: logo on left, links/cart on right */
+                flex-direction: row; 
+                flex-wrap: wrap; /* Allows nav to wrap below logo if needed */
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
             }
             
-            /* Tells the main content to take up full width below the header */
+            .logo {
+                margin-bottom: 0 !important;
+                font-size: 24px;
+            }
+
+            nav {
+                flex-direction: row; /* Horizontal links */
+                flex-wrap: wrap; 
+                gap: 10px;
+                margin-top: 0;
+            }
+            
+            /* Fixes the Main Content overlap */
             main {
-                margin-left: 0; /* Removes the sidebar margin */
+                margin-left: 0 !important; /* Removes the desktop sidebar offset */
+                width: 100%; 
+                padding: 20px 10px;
+                box-sizing: border-box; 
             }
             
-            .product { width: 85%; }
+            /* Target the search input's inline style on mobile */
+            #productSearch {
+                width: 90% !important; 
+                box-sizing: border-box;
+                padding: 15px 20px !important;
+            }
             
-            nav { 
-                margin-top: 10px; 
-                /* Optional: makes nav links horizontal on mobile */
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
+            /* Make product cards full width on mobile */
+            .product { 
+                width: 90%; 
             }
         }
     </style>
@@ -222,7 +243,7 @@
                 type="text" 
                 id="productSearch" 
                 onkeyup="searchProducts()" 
-                placeholder=" Search your Chappal..." 
+                placeholder=" 🔍 Search your Chappal..." 
                 style="
                     width: 450px; 
                     padding: 20px 15px; 
