@@ -1,327 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us - AMIO'Z WORLD</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    html { scroll-behavior: smooth; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - AMIO'Z WORLD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- CORE LAYOUT STYLES FOR SIDEBAR --- */
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #3e2723;
+            background: linear-gradient(135deg, #fff8f0, #f8efe6, #f5e4d7);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            display: flex; 
+            min-height: 100vh;
+        }
+    
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    
+        /* Sidebar (Header) - DESKTOP STYLES */
+        header {
+            background: linear-gradient(180deg, #6d4c41, #8d6e63, #a1887f);
+            color: #fff;
+            width: 230px; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 30px 20px;
+            box-shadow: 4px 0 15px rgba(0, 0, 0, 0.25);
+            position: fixed; /* Key for fixed sidebar */
+            left: 0;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-weight: 800;
+            font-size: 30px;
+            margin-bottom: 50px;
+        }
+    
+        nav {
+            display: flex;
+            flex-direction: column; 
+            gap: 20px;
+        }
+    
+        nav a {
+            color: #fff8f0;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+    
+        nav a:hover {
+            color: #ffe0b2;
+        }
+    
+        /* Main Content Area - DESKTOP STYLES */
+        main {
+            margin-left: 270px; /* Pushes content past the sidebar */
+            padding: 40px;
+            flex: 1;
+            width: 100%; 
+            box-sizing: border-box;
+        }
+        
+        /* --- CONTACT SPECIFIC STYLES --- */
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #6d4c41;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .contact-info p {
+            font-size: 18px;
+            margin: 15px 0;
+            color: #4e342e;
+        }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      color: #3e2723;
-      background: linear-gradient(135deg, #f7ede2, #fffaf3, #e6ccb2);
-      background-size: 300% 300%;
-      animation: gradientMove 10s ease-in-out infinite;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      transition: background 0.5s ease;
-    }
+        .contact-info i {
+            margin-right: 10px;
+            color: #a1887f;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        form input, form textarea {
+            padding: 15px;
+            border: 1px solid #d7ccc8;
+            border-radius: 8px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
 
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+        form input:focus, form textarea:focus {
+            border-color: #a1887f;
+            outline: none;
+        }
 
-    /* Sidebar layout */
-    header {
-      background: linear-gradient(180deg, #6d4c41, #8d6e63, #a1887f);
-      color: #fff;
-      width: 230px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 30px 20px;
-      box-shadow: 4px 0 15px rgba(0, 0, 0, 0.25);
-      border-radius: 0 20px 20px 0;
-      position: fixed;
-      left: 0;
-      top: 0;
-      transition: all 0.4s ease;
-    }
-    header:hover { box-shadow: 6px 0 25px rgba(0, 0, 0, 0.3); }
+        form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
 
-    .logo {
-      font-size: 30px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      margin-bottom: 50px;
-      text-align: left;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
-      transition: color 0.3s ease;
-    }
-    .logo:hover { color: #ffe0b2; }
+        form button {
+            background: linear-gradient(90deg, #b08968, #6f4e37);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        form button:hover {
+            background: linear-gradient(90deg, #6f4e37, #b08968);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
 
-    nav {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    nav a {
-      color: #fff8f0;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 18px;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: #ffe0b2;
-      transition: width 0.3s ease;
-    }
-    nav a:hover::after { width: 100%; }
-    nav a:hover { color: #ffe0b2; transform: translateX(6px); }
+        /* ======================================= */
+        /* === MOBILE RESPONSIVENESS FIX (768px) === */
+        /* ======================================= */
+        @media(max-width: 768px) {
+            body {
+                flex-direction: column; 
+            }
+            
+            /* Fixes the Header (Sidebar) to stack on top */
+            header {
+                position: relative !important; /* Overrides the 'fixed' positioning */
+                width: 100% !important; 
+                min-height: auto !important;
+                border-radius: 0;
+                box-sizing: border-box;
+                /* New layout for mobile header */
+                flex-direction: row; 
+                flex-wrap: wrap; 
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
+            }
+            
+            .logo {
+                margin-bottom: 0 !important;
+                font-size: 24px;
+            }
 
-    /* Main Section Wrapper */
-    main {
-      margin-left: 250px; /* shifted to right for sidebar */
-      padding: 60px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      box-sizing: border-box;
-      width: calc(100% - 250px);
-    }
-
-    /* Contact Box */
-    .contact-box {
-      background: #fff;
-      padding: 40px 50px;
-      border-radius: 25px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-      text-align: center;
-      max-width: 600px;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      margin-bottom: 40px;
-    }
-
-    .contact-box:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-    }
-
-    .contact-box h1 { color: #6f4e37; font-size: 36px; margin-bottom: 20px; letter-spacing: 1px; }
-    .contact-box p { font-size: 17px; color: #4b2e1f; margin: 10px 0; }
-    .contact-box a { color: #6f4e37; text-decoration: none; font-weight: 600; transition: color 0.3s ease; }
-    .contact-box a:hover { color: #b08968; }
-
-    /* Icons */
-    .contact-icons {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      margin-top: 25px;
-    }
-    .contact-icons a {
-      color: #6f4e37;
-      font-size: 32px;
-      transition: all 0.3s ease;
-      border: 2px solid #6f4e37;
-      border-radius: 50%;
-      width: 55px;
-      height: 55px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #fff;
-    }
-    .contact-icons a:hover {
-      color: #fff;
-      background-color: #6f4e37;
-      transform: scale(1.15) rotate(5deg);
-    }
-
-    /* Reviews Section */
-    section#reviews, section#submit-review {
-      max-width: 700px;
-      width: 100%;
-      background: #fff;
-      border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      text-align: center;
-      padding: 35px 25px;
-      margin-bottom: 40px;
-    }
-
-    section#reviews h2, section#submit-review h2 { font-size: 28px; margin-bottom: 25px; color: #6f4e37; }
-
-    .review-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-
-    .review-card {
-      flex-basis: 300px;
-      flex-grow: 1;
-      background: #fdfaf6;
-      border: 1px solid #e6ccb2;
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-align: left;
-    }
-    .review-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-    }
-    .review-card .stars { color: #e67e22; margin-bottom: 15px; font-size: 18px; }
-    .review-card p { font-size: 16px; line-height: 1.6; color: #4b2e1f; }
-    .review-card .reviewer { font-style: italic; font-weight: 600; text-align: right; margin-top: 15px; color: #6f4e37; }
-
-    /* Submit Review Form */
-    #submit-review input, #submit-review select, #submit-review textarea {
-      width: 80%;
-      padding: 8px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-    #submit-review button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      background: #6f4e37;
-      color: white;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-
-    /* Responsive */
-    @media(max-width: 768px) {
-      main { margin-left: 0; width: 100%; padding: 20px; }
-      .contact-box, section#reviews, section#submit-review { width: 95%; padding: 25px; }
-      .contact-icons a { font-size: 26px; width: 48px; height: 48px; }
-      .review-card { flex-basis: 100%; }
-    }
-  </style>
+            nav { 
+                margin-top: 10px; 
+                flex-direction: row; /* Makes nav links horizontal on mobile */
+                flex-wrap: wrap;
+                justify-content: space-around;
+                width: 100%; 
+            }
+            
+            /* Fixes the Main Content overlap */
+            main {
+                margin-left: 0 !important; /* Removes the sidebar margin */
+                width: 100%;
+                padding: 20px 10px;
+            }
+            
+            .contact-container {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <div class="logo">AMIO'Z WORLD</div>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="checkout.html" style="margin-left: 30px; text-decoration: none; color: white;">
-            <i class="fas fa-shopping-cart"></i> 
-            <span id="cart-count" style="background-color: #ffe0b2; color: #6d4c41; border-radius: 50%; padding: 2px 7px; font-size: 14px; position: relative; top: -10px; left: -5px; font-weight: bold;">0</span>
-        </a>
-    </nav>
-  </header>
+    <header>
+        <div class="logo">AMIO'Z WORLD</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
 
-  <main>
-    <!-- Contact Box -->
-    <div class="contact-box">
-      <h1>Contact Us</h1>
-      <p>We’d love to hear from you! Whether it’s a question or feedback, feel free to reach out.</p>
-      <p>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
-      <p>Instagram: <a href="https://www.instagram.com/yourusername" target="_blank">@yourusername</a></p>
-      <div class="contact-icons">
-        <a href="mailto:your-email@example.com"><i class="fas fa-envelope"></i></a>
-        <a href="https://www.instagram.com/yourusername" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
-      </div>
-    </div>
+            <a href="checkout.html" style="margin-top: 15px; text-decoration: none; color: white;">
+                <i class="fas fa-shopping-cart"></i> 
+                <span id="cart-count" style="background-color: #ffe0b2; color: #6d4c41; border-radius: 50%; padding: 2px 7px; font-size: 14px; position: relative; top: -10px; left: -5px; font-weight: bold;">0</span>
+            </a>
+        </nav>
+    </header>
 
-    <!-- Submit Review Form FIRST -->
-    <section id="submit-review">
-      <h2>Leave a Review</h2>
-      <form id="reviewForm">
-        <input type="text" id="reviewerName" placeholder="Your Name" required>
-        <br>
-        <label for="rating">Rating:</label>
-        <select id="rating" required>
-          <option value="5">5 Stars</option>
-          <option value="4">4 Stars</option>
-          <option value="3">3 Stars</option>
-          <option value="2">2 Stars</option>
-          <option value="1">1 Star</option>
-        </select>
-        <br>
-        <textarea id="reviewText" placeholder="Write your review here..." required></textarea>
-        <br>
-        <button type="submit">Submit Review</button>
-      </form>
-    </section>
-
-    <!-- Customer Reviews BELOW -->
-    <section id="reviews">
-      <h2>Customer Reviews</h2>
-      <div class="review-container">
-        <div class="review-card">
-          <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <p>"Absolutely love these chappals! The quality is amazing, and they are so comfortable. Will definitely buy again."</p>
-          <p class="reviewer">- Priya K.</p>
+    <main>
+        <div class="contact-container">
+            <h1>Get In Touch With Us</h1>
+            
+            <div class="contact-info">
+                <p><i class="fas fa-map-marker-alt"></i>Kolhapur, Maharashtra, India</p>
+                <p><i class="fas fa-envelope"></i>amiozworld@example.com</p>
+                <p><i class="fas fa-phone"></i>+91 98765 43210</p>
+            </div>
+            
+            <form id="contactForm">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
         </div>
-        <div class="review-card">
-          <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-          <p>"Beautiful craftsmanship. They look even better in person. Fast delivery too! Highly recommended."</p>
-          <p class="reviewer">- Rohan S.</p>
-        </div>
-        <div class="review-card">
-          <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <p>"I'm so happy with my purchase. Authentic Kolhapuri chappals at a great price. Thank you, AMIO'Z WORLD!"</p>
-          <p class="reviewer">- Anjali M.</p>
-        </div>
-      </div>
-
-  </main>
-
-  <script>
-    const form = document.getElementById('reviewForm');
-    const reviewContainer = document.getElementById('review-container');
-
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      const name = document.getElementById('reviewerName').value;
-      const rating = document.getElementById('rating').value;
-      const text = document.getElementById('reviewText').value;
-
-      const card = document.createElement('div');
-      card.className = 'review-card';
-
-      let starsHTML = '';
-      for(let i=0;i<rating;i++){ starsHTML += '<i class="fas fa-star"></i> '; }
-      for(let i=rating;i<5;i++){ starsHTML += '<i class="far fa-star"></i> '; }
-
-      card.innerHTML = `
-        <div class="stars">${starsHTML}</div>
-        <p>"${text}"</p>
-        <p class="reviewer">- ${name}</p>
-      `;
-      reviewContainer.appendChild(card);
-      form.reset();
-    });
-  </script>
-
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
