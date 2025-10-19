@@ -1,427 +1,427 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Products - AMIO'Z WORLD</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-  
-  <style>
-    html { scroll-behavior: smooth; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - AMIO'Z WORLD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <style>
+        html { scroll-behavior: smooth; }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      color: #3e2723;
-      background: linear-gradient(135deg, #fff8f0, #f8efe6, #f5e4d7);
-      background-size: 300% 300%;
-      animation: gradientMove 10s ease-in-out infinite;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #3e2723;
+            background: linear-gradient(135deg, #fff8f0, #f8efe6, #f5e4d7);
+            background-size: 300% 300%;
+            animation: gradientMove 10s ease-in-out infinite;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* =================================== */
+        /* ==   HERE IS THE NEW CSS RULE    == */
+        /* =================================== */
+        main {
+            margin-left: 230px; /* This pushes your content to the right */
+        }
+        /* =================================== */
+
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+    /* Sidebar layout */
+    header {
+        background: linear-gradient(180deg, #6d4c41, #8d6e63, #a1887f);
+        color: #fff;
+        width: 230px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 30px 20px;
+        box-shadow: 4px 0 15px rgba(0, 0, 0, 0.25);
+        border-radius: 0 20px 20px 0;
+        position: fixed; /* This is what causes the overlap */
+        left: 0;
+        top: 0;
+        transition: all 0.4s ease;
+    }
+    header:hover {
+        box-shadow: 6px 0 25px rgba(0, 0, 0, 0.3);
     }
 
-    /* =================================== */
-    /* ==   HERE IS THE NEW CSS RULE    == */
-    /* =================================== */
-    main {
-      margin-left: 230px; /* This pushes your content to the right */
+    .logo {
+        font-size: 30px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        margin-bottom: 50px;
+        text-align: left;
+        text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+        transition: color 0.3s ease;
     }
-    /* =================================== */
-
-
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    .logo:hover {
+        color: #ffe0b2;
     }
 
-  /* Sidebar layout */
-  header {
-    background: linear-gradient(180deg, #6d4c41, #8d6e63, #a1887f);
-    color: #fff;
-    width: 230px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 30px 20px;
-    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.25);
-    border-radius: 0 20px 20px 0;
-    position: fixed; /* This is what causes the overlap */
-    left: 0;
-    top: 0;
-    transition: all 0.4s ease;
-  }
-  header:hover {
-    box-shadow: 6px 0 25px rgba(0, 0, 0, 0.3);
-  }
-
-  .logo {
-    font-size: 30px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    margin-bottom: 50px;
-    text-align: left;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
-    transition: color 0.3s ease;
-  }
-  .logo:hover {
-    color: #ffe0b2;
-  }
-
-  nav {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  nav a {
-    color: #fff8f0;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 18px;
-    transition: all 0.3s ease;
-    position: relative;
-  }
-  nav a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #ffe0b2;
-    transition: width 0.3s ease;
-  }
-  nav a:hover::after {
-    width: 100%;
-  }
-  nav a:hover {
-    color: #ffe0b2;
-    transform: translateX(6px);
-  }
-
-
-    /* Product Section */
-    #products {
-      padding: 50px 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
+    nav {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
-
-    .product {
-      background: #fff;
-      border-radius: 20px;
-      padding: 20px;
-      width: 260px;
-      text-align: center;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    nav a {
+        color: #fff8f0;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 18px;
+        transition: all 0.3s ease;
+        position: relative;
     }
-
-    .product:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+    nav a::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #ffe0b2;
+        transition: width 0.3s ease;
     }
-
-    .mini-slider {
-      position: relative;
-      overflow: hidden;
-      height: 220px;
-      border-radius: 15px;
-      margin-bottom: 15px;
-    }
-
-    .mini-slider img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-      border-radius: 15px;
-    }
-
-    .mini-slider img.active { opacity: 1; }
-
-    .product h2 { font-size: 20px; color: #4b2e1f; margin: 15px 0 5px; }
-    .product p { font-weight: 600; color: #6f4e37; margin: 5px 0 15px; }
-    .product button {
-      background: linear-gradient(90deg, #b08968, #6f4e37);
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-    .product button:hover {
-      background: linear-gradient(90deg, #6f4e37, #b08968);
-      transform: scale(1.07);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-
-    /* =================================== */
-    /* == HERE IS THE NEW MOBILE-FIX CSS == */
-    /* =================================== */
-    @media(max-width:768px){
-      /* Makes the header stack on top instead of being fixed */
-      header {
-        position: relative; /* Removes the 'fixed' positioning */
+    nav a:hover::after {
         width: 100%;
-        min-height: auto; /* Lets it size to its content */
-        border-radius: 0;
-        box-sizing: border-box; /* Prevents padding from breaking width */
-      }
-      
-      /* Tells the main content to take up full width below the header */
-      main {
-        margin-left: 0; /* Removes the sidebar margin */
-      }
-      
-      .product { width: 85%; }
-      
-      nav { 
-        margin-top: 10px; 
-        /* Optional: makes nav links horizontal on mobile */
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
     }
-  </style>
+    nav a:hover {
+        color: #ffe0b2;
+        transform: translateX(6px);
+    }
+
+
+        /* Product Section */
+        #products {
+            padding: 50px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .product {
+            background: #fff;
+            border-radius: 20px;
+            padding: 20px;
+            width: 260px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .product:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+        }
+
+        .mini-slider {
+            position: relative;
+            overflow: hidden;
+            height: 220px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        .mini-slider img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            border-radius: 15px;
+        }
+
+        .mini-slider img.active { opacity: 1; }
+
+        .product h2 { font-size: 20px; color: #4b2e1f; margin: 15px 0 5px; }
+        .product p { font-weight: 600; color: #6f4e37; margin: 5px 0 15px; }
+        .product button {
+            background: linear-gradient(90deg, #b08968, #6f4e37);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .product button:hover {
+            background: linear-gradient(90deg, #6f4e37, #b08968);
+            transform: scale(1.07);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* =================================== */
+        /* == HERE IS THE NEW MOBILE-FIX CSS == */
+        /* =================================== */
+        @media(max-width:768px){
+            /* Makes the header stack on top instead of being fixed */
+            header {
+                position: relative; /* Removes the 'fixed' positioning */
+                width: 100%;
+                min-height: auto; /* Lets it size to its content */
+                border-radius: 0;
+                box-sizing: border-box; /* Prevents padding from breaking width */
+            }
+            
+            /* Tells the main content to take up full width below the header */
+            main {
+                margin-left: 0; /* Removes the sidebar margin */
+            }
+            
+            .product { width: 85%; }
+            
+            nav { 
+                margin-top: 10px; 
+                /* Optional: makes nav links horizontal on mobile */
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <div class="logo">AMIO'Z WORLD</div>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+    <header>
+        <div class="logo">AMIO'Z WORLD</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
 
-        <a href="checkout.html" style="margin-left: 30px; text-decoration: none; color: white;">
-            <i class="fas fa-shopping-cart"></i> 
-            <span id="cart-count" style="background-color: #ffe0b2; color: #6d4c41; border-radius: 50%; padding: 2px 7px; font-size: 14px; position: relative; top: -10px; left: -5px; font-weight: bold;">0</span>
-        </a>
-    </nav>
-  </header>
+            <a href="checkout.html" style="margin-left: 30px; text-decoration: none; color: white;">
+                <i class="fas fa-shopping-cart"></i> 
+                <span id="cart-count" style="background-color: #ffe0b2; color: #6d4c41; border-radius: 50%; padding: 2px 7px; font-size: 14px; position: relative; top: -10px; left: -5px; font-weight: bold;">0</span>
+            </a>
+        </nav>
+    </header>
 
-  <main>
-  
-    <div style="text-align: center; margin: 30px 0;">
-      <input 
-        type="text" 
-        id="productSearch" 
-        onkeyup="searchProducts()" 
-        placeholder=" Search your Chappal..." 
-        style="
-          width: 450px; 
-          padding: 20px 15px; 
-          border-radius: 25px; 
-          border: 2px solid #b08968; 
-          outline: none; 
-          font-size: 16px; 
-          box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-          transition: 0.3s;
-        " 
-        onfocus="this.style.borderColor='#6f4e37'; this.style.boxShadow='0 4px 15px rgba(111,78,55,0.3)';" 
-        onblur="this.style.borderColor='#b08968'; this.style.boxShadow='0 4px 10px rgba(0,0,0,0.1)';"
-      >
-    </div>
+    <main>
+    
+        <div style="text-align: center; margin: 30px 0;">
+            <input 
+                type="text" 
+                id="productSearch" 
+                onkeyup="searchProducts()" 
+                placeholder=" Search your Chappal..." 
+                style="
+                    width: 450px; 
+                    padding: 20px 15px; 
+                    border-radius: 25px; 
+                    border: 2px solid #b08968; 
+                    outline: none; 
+                    font-size: 16px; 
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                    transition: 0.3s;
+                " 
+                onfocus="this.style.borderColor='#6f4e37'; this.style.boxShadow='0 4px 15px rgba(111,78,55,0.3)';" 
+                onblur="this.style.borderColor='#b08968'; this.style.boxShadow='0 4px 10px rgba(0,0,0,0.1)';"
+            >
+        </div>
 
-    <img src="C:\Users\vibhawari kamble\OneDrive\Desktop\AMIOZ1.2\photo" >  
+        
+        <section id="products">
+            <div class="product">
+                <div class="mini-slider">
+                    <img src="chap16.jpeg" class="active">
+                    <img src="chap17.jpeg">
+                    <img src="chap18.jpeg">
+                </div>
+                <h2>Paithani white sand Kolhapuri</h2>
+                <p>Price: ₹949</p>
+                <button 
+                    onclick="addToCart('kol_16', 'Paithani white sand Kolhapuri', 949)"
+                >
+                    Add to Cart
+                </button>
+            </div>
 
-    <section id="products">
-      <div class="product">
-          <div class="mini-slider">
-              <img src="photo/chap16-17-18/chap16.jpeg" class="active">
-              <img src="photo/chap16-17-18/chap17.jpeg">
-              <img src="photo/chap16-17-18/chap18.jpeg">
-          </div>
-          <h2>Paithani white sand Kolhapuri</h2>
-          <p>Price: ₹949</p>
-          <button 
-              onclick="addToCart('kol_16', 'Paithani white sand Kolhapuri', 949)"
-          >
-              Add to Cart
-          </button>
-      </div>
+            <div class="product">
+                <div class="mini-slider">
+                    <img src="chap21.jpeg" class="active">
+                </div>
+                <h2>Kolhapuri jari white pattern</h2>
+                <p>Price: ₹899</p>
+                <button 
+                    onclick="addToCart('kol_21', 'Kolhapuri jari white pattern', 899)"
+                >
+                    Add to Cart
+                </button>
+            </div>
+            
+            <div class="product">
+                <div class="mini-slider">
+                    <img src="chap19.jpeg" class="active">
+                    <img src="chap20.jpeg">
+                    <img src="chap23.jpeg">
+                    
+                </div>
+                <h2>Paithani green Kolhapuri</h2>
+                <p>Price: ₹949</p>
+                <button 
+                    onclick="addToCart('kol_19', 'Paithani green Kolhapuri', 949)"
+                >
+                    Add to Cart
+                </button>
+            </div>
 
-      <div class="product">
-          <div class="mini-slider">
-              <img src="photo/chap-grey-n-black/chap21.jpeg" class="active">
-              <img src="photo/chap-grey-n-black/chap21.jpeg" >
-          </div>
-          <h2>Kolhapuri jari white pattern</h2>
-          <p>Price: ₹899</p>
-          <button 
-              onclick="addToCart('kol_21', 'Kolhapuri jari white pattern', 899)"
-          >
-              Add to Cart
-          </button>
-      </div>
-      
-      <div class="product">
-          <div class="mini-slider">
-              <img src="photo/chap19-20-23/chap19.jpeg" class="active">
-              <img src="photo/chap19-20-23/chap20.jpeg">
-              <img src="photo/chap19-20-23/chap23.jpeg">
-              
-          </div>
-          <h2>Paithani green Kolhapuri</h2>
-          <p>Price: ₹949</p>
-          <button 
-              onclick="addToCart('kol_19', 'Paithani green Kolhapuri', 949)"
-          >
-              Add to Cart
-          </button>
-      </div>
+            <div class="product">
+                <div class="mini-slider">
+                    <img src="chap26.jpeg" class="active">
+                </div>
+                <h2>Kolhapuri veni pattern Chappal</h2>
+                <p>Price: ₹969</p>
+                <button 
+                    onclick="addToCart('kol_26', 'Kolhapuri veni pattern Chappal', 969)"
+                >
+                    Add to Cart
+                </button>
+            </div>
 
-      <div class="product">
-          <div class="mini-slider">
-              <img src="photo/chap26.jpeg" class="active">
-          </div>
-          <h2>Kolhapuri veni pattern Chappal</h2>
-          <p>Price: ₹969</p>
-          <button 
-              onclick="addToCart('kol_26', 'Kolhapuri veni pattern Chappal', 969)"
-          >
-              Add to Cart
-          </button>
-      </div>
-
-      <div class="product">
-          <div class="mini-slider">
-              <img src="photo/chap4-14-15-25/chap14.jpeg" class="active">
-              <img src="photo/chap4-14-15-25/chap15.jpeg">
-              <img src="photo/chap4-14-15-25/chap25.jpeg">
-          </div>
-          <h2>Paithani blue Kolhapuri</h2>
-          <p>Price: ₹949</p>
-          <button 
-              onclick="addToCart('kol_14', 'Paithani blue Kolhapuri', 949)"
-          >
-              Add to Cart
-          </button>
-      </div>
+            <div class="product">
+                <div class="mini-slider">
+                    <img src="chap14.jpeg" class="active">
+                    <img src="chap15.jpeg">
+                    <img src="chap25.jpeg">
+                </div>
+                <h2>Paithani blue Kolhapuri</h2>
+                <p>Price: ₹949</p>
+                <button 
+                    onclick="addToCart('kol_14', 'Paithani blue Kolhapuri', 949)"
+                >
+                    Add to Cart
+                </button>
+            </div>
 
 
-      <div class="product">
-          <div class="mini-slider">
-              <img src="photo/chap29.jpeg" class="active">
-          </div>
-          <h2>Kolhapuri Angatha Patti</h2>
-          <p>Price: ₹899</p>
-          <button 
-              onclick="addToCart('kol_29', 'Kolhapuri Angatha Patti', 899)"
-          >
-              Add to Cart
-          </button>
-      </div>
+            <div class="product">
+                <div class="mini-slider">
+                    <img src="chap29.jpeg" class="active">
+                </div>
+                <h2>Kolhapuri Angatha Patti</h2>
+                <p>Price: ₹899</p>
+                <button 
+                    onclick="addToCart('kol_29', 'Kolhapuri Angatha Patti', 899)"
+                >
+                    Add to Cart
+                </button>
+            </div>
 
-      <div class="product">
-          <div class="mini-slider">
-              <img src="photo/chap11-12-13/chap11.jpeg" class="active">
-              <img src="photo/chap11-12-13/chap12.jpeg">
-              <img src="photo/chap11-12-13/chap13.jpeg">
-          </div>
-          <h2>Paithani pink  Kolhapuri</h2>
-          <p>Price: ₹949</p>
-          <button 
-              onclick="addToCart('kol_11', 'Paithani pink Kolhapuri', 949)"
-          >
-              Add to Cart
-          </button>
-      </div>
+            <div class="product">
+                <div class="mini-slider">
+                    <img src="chap11.jpeg" class="active">
+                    <img src="chap12.jpeg">
+                    <img src="chap13.jpeg">
+                </div>
+                <h2>Paithani pink  Kolhapuri</h2>
+                <p>Price: ₹949</p>
+                <button 
+                    onclick="addToCart('kol_11', 'Paithani pink Kolhapuri', 949)"
+                >
+                    Add to Cart
+                </button>
+            </div>
 
-      <div class="product">
-          <div class="mini-slider">
-              <img src="photo/chap27.jpeg" class="active">
-          </div>
-          <h2> Paithani pattern Kolhapuri </h2>
-          <p>Price: ₹949</p>
-          <button 
-              onclick="addToCart('kol_27', 'Paithani pattern Kolhapuri', 949)"
-          >
-              Add to Cart
-          </button>
-      </div>
+            <div class="product">
+                <div class="mini-slider">
+                    <img src="chap27.jpeg" class="active">
+                </div>
+                <h2> Paithani pattern Kolhapuri </h2>
+                <p>Price: ₹949</p>
+                <button 
+                    onclick="addToCart('kol_27', 'Paithani pattern Kolhapuri', 949)"
+                >
+                    Add to Cart
+                </button>
+            </div>
 
-      <div class="product">
-          <div class="mini-slider">
-              <img src="photo/chap5-6-7/chap5.jpeg" class="active">
-              <img src="photo/chap5-6-7/chap6.jpeg">
-              <img src="photo/chap5-6-7/chap7.jpeg">
-          </div>
-          <h2>Paithani purple,golden Kolhapuri</h2>
-          <p>Price: ₹949</p>
-          <button 
-              onclick="addToCart('kol_05', 'Paithani purple,golden Kolhapuri', 949)"
-          >
-              Add to Cart
-          </button>
-      </div>
+            <div class="product">
+                <div class="mini-slider">
+                    <img src="chap5.jpeg" class="active">
+                    <img src="chap6.jpeg">
+                    <img src="chap7.jpeg">
+                </div>
+                <h2>Paithani purple,golden Kolhapuri</h2>
+                <p>Price: ₹949</p>
+                <button 
+                    onclick="addToCart('kol_05', 'Paithani purple,golden Kolhapuri', 949)"
+                >
+                    Add to Cart
+                </button>
+            </div>
 
-      
-      <div class="product">
-          <div class="mini-slider">
-              <img src="photo/chap28.jpeg" class="active">
-          </div>
-          <h2>Kolhapuri Black Chappal</h2>
-          <p>Price: ₹949</p>
-          <button 
-              onclick="addToCart('kol_28', 'Kolhapuri Black Chappal', 949)"
-          >
-              Add to Cart
-          </button>
-      </div>
+            
+            <div class="product">
+                <div class="mini-slider">
+                    <img src="chap28.jpeg" class="active">
+                </div>
+                <h2>Kolhapuri Black Chappal</h2>
+                <p>Price: ₹949</p>
+                <button 
+                    onclick="addToCart('kol_28', 'Kolhapuri Black Chappal', 949)"
+                >
+                    Add to Cart
+                </button>
+            </div>
 
-      <div class="product">
-          <div class="mini-slider">
-              <img src="photo/chap8-9-10/chap10.jpeg" class="active">
-              <img src="photo/chap8-9-10/chap8.jpeg">
-              <img src="photo/chap8-9-10/chap9.jpeg">
-          </div>
-          <h2>Paithani tangerine Kolhapuri</h2>
-          <p>Price: ₹949</p>
-          <button 
-              onclick="addToCart('kol_10', 'Paithani tangerine Kolhapuri', 949)"
-          >
-              Add to Cart
-          </button>
-      </div>
-    </section>
-<script>
-  // Select all mini-sliders
-  const sliders = document.querySelectorAll('.mini-slider');
+            <div class="product">
+                <div class="mini-slider">
+                    <img src="chap10.jpeg" class="active">
+                    <img src="chap8.jpeg">
+                    <img src="chap9.jpeg">
+                </div>
+                <h2>Paithani tangerine Kolhapuri</h2>
+                <p>Price: ₹949</p>
+                <button 
+                    onclick="addToCart('kol_10', 'Paithani tangerine Kolhapuri', 949)"
+                >
+                    Add to Cart
+                </button>
+            </div>
+        </section>
 
-  sliders.forEach(slider => {
-    const images = slider.querySelectorAll('img');
-    let index = 0;
+    <script>
+        // Select all mini-sliders
+        const sliders = document.querySelectorAll('.mini-slider');
 
-    // Function to switch images
-    function nextImage() {
-      images[index].classList.remove('active');
-      index = (index + 1) % images.length;
-      images[index].classList.add('active');
-    }
+        sliders.forEach(slider => {
+            const images = slider.querySelectorAll('img');
+            let index = 0;
 
-    // Change image every 2.5 seconds
-    setInterval(nextImage, 2500);
-  });
-</script>
+            // Function to switch images
+            function nextImage() {
+                images[index].classList.remove('active');
+                index = (index + 1) % images.length;
+                images[index].classList.add('active');
+            }
 
-  </main>
-  <script src="script.js"></script>
+            // Change image every 2.5 seconds
+            setInterval(nextImage, 2500);
+        });
+
+        // The JavaScript functions for cart and payment will be in script.js
+    </script>
+
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
