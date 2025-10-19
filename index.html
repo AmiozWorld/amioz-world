@@ -12,10 +12,10 @@
 
     <style>
 /* ---------------------------------------------------------------------------------- */
-/* NOTE: The 'background: url('photo/bg-texture.jpg')' path has been removed below.  */
-/* If you have a file named 'bg-texture.jpg' in the root, change it to:             */
-/* background: url('bg-texture.jpg') center/cover no-repeat;                        */
-/* If that file is missing, the code below is safest to avoid errors.               */
+/* NOTE: The 'background: url('photo/bg-texture.jpg')' path has been removed below.  */
+/* If you have a file named 'bg-texture.jpg' in the root, change it to:             */
+/* background: url('bg-texture.jpg') center/cover no-repeat;                        */
+/* If that file is missing, the code below is safest to avoid errors.               */
 /* ---------------------------------------------------------------------------------- */
 html {
     scroll-behavior: smooth;
@@ -29,6 +29,7 @@ body {
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
     display: flex;
+    flex-direction: column; /* Ensure body can handle stacked elements on mobile */
     min-height: 100vh;
 }
 @keyframes gradientShift {
@@ -37,7 +38,7 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* Sidebar layout */
+/* Sidebar layout - DESKTOP */
 header {
     background: linear-gradient(180deg, #6d4c41, #8d6e63, #a1887f);
     color: #fff;
@@ -49,10 +50,11 @@ header {
     padding: 30px 20px;
     box-shadow: 4px 0 15px rgba(0, 0, 0, 0.25);
     border-radius: 0 20px 20px 0;
-    position: fixed;
+    position: fixed; /* This causes the mobile problem */
     left: 0;
     top: 0;
     transition: all 0.4s ease;
+    z-index: 10;
 }
 header:hover {
     box-shadow: 6px 0 25px rgba(0, 0, 0, 0.3);
@@ -102,9 +104,9 @@ nav a:hover {
     transform: translateX(6px);
 }
 
-/* Content area next to sidebar */
+/* Content area next to sidebar - DESKTOP */
 main {
-    margin-left: 250px;
+    margin-left: 250px; /* Pushes content away from fixed sidebar */
     padding: 40px;
     flex: 1;
 }
@@ -119,8 +121,8 @@ main {
     content: "";
     position: absolute;
     inset: 0;
-    /* Corrected: Removed folder path, assuming bg-texture.jpg is missing or needs to be in root */
-    background: none; /* Changed from url('photo/bg-texture.jpg') to prevent error */
+    /* This path was removed to prevent a 404 error */
+    background: none; 
     opacity: 0.08;
     z-index: -1;
 }
@@ -300,45 +302,64 @@ button:hover {
     transform: translateY(0);
 }
 
-/* Responsive */
+/* ======================================= */
+/* === MOBILE RESPONSIVENESS FIX (768px) === */
+/* ======================================= */
 @media(max-width: 768px) {
+    /* Fixes the Header (Sidebar) to stack on top */
     header {
-        position: relative;
-        width: 100%;
-        min-height: auto;
+        position: relative !important; /* Overrides the 'position: fixed' */
+        width: 100% !important; 
+        min-height: auto !important;
         border-radius: 0;
+        /* Layout for mobile header */
+        flex-direction: row; 
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
     }
+    
+    .logo {
+        margin-bottom: 0;
+        font-size: 24px;
+    }
+
+    nav {
+        flex-direction: row; /* Horizontal links */
+        flex-wrap: wrap; 
+        gap: 10px;
+    }
+
+    /* Fixes the Main Content overlap */
     main {
-        margin-left: 0;
+        margin-left: 0 !important; /* Removes the sidebar offset */
+        width: 100% !important; 
+        padding: 20px 10px;
     }
+    
     .search-bar input {
+        width: 90%;
+        padding: 15px 20px;
+    }
+
+    #home h2 {
+        font-size: 32px;
+    }
+
+    .tagline {
+        font-size: 16px;
+    }
+
+    .cta-btn {
+        padding: 12px 25px;
+        font-size: 16px;
+    }
+
+    .product {
         width: 90%;
     }
 }
-
-
-    /* Search bar */
-    .search-bar {
-        text-align: center;
-        margin: 30px 0;
-    }
-
-    .search-bar input {
-        width: 450px;
-        padding: 20px 15px;
-        border-radius: 25px;
-        border: 2px solid #b08968;
-        outline: none;
-        font-size: 16px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        transition: 0.3s;
-    }
-
-    .search-bar input:focus {
-        border-color: #6f4e37;
-        box-shadow: 0 4px 15px rgba(111,78,55,0.3);
-    }
-    </style>
+</style>
 </head>
 
 <body>
