@@ -1,303 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us - AMIO'Z WORLD</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    html { scroll-behavior: smooth; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - AMIO'Z WORLD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html { scroll-behavior: smooth; }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      color: #3e2723;
-      background: linear-gradient(135deg, #f7ede2, #fffaf3, #e6ccb2);
-      background-size: 300% 300%;
-      animation: gradientMove 10s ease-in-out infinite;
-      display: flex;
-      min-height: 100vh;
-      transition: background 0.5s ease;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #3e2723;
+            background: linear-gradient(135deg, #f7ede2, #fffaf3, #e6ccb2);
+            background-size: 300% 300%;
+            animation: gradientMove 10s ease-in-out infinite;
+            display: flex;
+            flex-direction: column; /* Changed to column for better mobile stacking */
+            min-height: 100vh;
+            transition: background 0.5s ease;
+        }
 
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-    /* Sidebar Header */
-    header {
-      background: linear-gradient(180deg, #6d4c41, #8d6e63, #a1887f);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 220px;
-      min-height: 100vh;
-      padding: 40px 20px;
-      box-shadow: 2px 0 8px rgba(0,0,0,0.2);
-      border-radius: 0 15px 15px 0;
-      position: fixed;
-      top: 0;
-      left: 0;
-      transition: all 0.4s ease;
-    }
+        /* Sidebar Header - DESKTOP STYLES */
+        header {
+            background: linear-gradient(180deg, #6d4c41, #8d6e63, #a1887f);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 220px;
+            min-height: 100vh;
+            padding: 40px 20px;
+            box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+            border-radius: 0 15px 15px 0;
+            position: fixed; /* This causes the mobile problem */
+            top: 0;
+            left: 0;
+            transition: all 0.4s ease;
+            z-index: 10; /* Added z-index to ensure it sits above content on desktop */
+        }
 
-    .logo {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 50px;
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
 
-    .logo:hover {
-      transform: scale(1.05);
-    }
+        .logo:hover {
+            transform: scale(1.05);
+        }
 
-    nav {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      gap: 25px;
-    }
+        nav {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 25px;
+        }
 
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 20px;
-      position: relative;
-      padding: 8px 0;
-      text-align: center;
-      transition: color 0.3s ease, background 0.3s ease;
-      border-radius: 10px;
-    }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 20px;
+            position: relative;
+            padding: 8px 0;
+            text-align: center;
+            transition: color 0.3s ease, background 0.3s ease;
+            border-radius: 10px;
+        }
 
-    nav a:hover {
-      color: #6f4e37;
-      background: #f5deb3;
-    }
+        nav a:hover {
+            color: #6f4e37;
+            background: #f5deb3;
+        }
 
-    /* Main Content Wrapper */
-    main {
-      margin-left: 240px;
-      padding: 60px 20px;
-      width: calc(100% - 240px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      box-sizing: border-box;
-      transition: margin-left 0.4s ease;
-    }
+        /* Main Content Wrapper - DESKTOP STYLES */
+        main {
+            margin-left: 240px; /* Pushes content right for sidebar */
+            padding: 60px 20px;
+            width: calc(100% - 240px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+            transition: margin-left 0.4s ease;
+            flex-grow: 1; /* Allows content to take remaining space */
+        }
 
-    /* About Section */
-    section#about {
-      padding: 60px 20px;
-      max-width: 800px;
-      width: 100%;
-      margin-bottom: 40px;
-      background: #fff;
-      border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      text-align: center;
-      transition: all 0.4s ease;
-    }
+        /* About Section */
+        section#about {
+            padding: 60px 20px;
+            max-width: 800px;
+            width: 100%;
+            margin-bottom: 40px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.4s ease;
+        }
 
-    section#about:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 35px rgba(0,0,0,0.15);
-    }
+        section#about:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        }
 
-    #about h1 {
-      font-size: 36px;
-      margin-bottom: 20px;
-      color: #6f4e37;
-      transition: color 0.3s ease;
-    }
+        #about h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #6f4e37;
+            transition: color 0.3s ease;
+        }
 
-    #about h1:hover {
-      color: #b08968;
-    }
+        #about h1:hover {
+            color: #b08968;
+        }
 
-    #about p {
-      font-size: 18px;
-      color: #4b2e1f;
-      line-height: 1.8;
-      margin-bottom: 15px;
-      transition: color 0.3s ease;
-    }
+        #about p {
+            font-size: 18px;
+            color: #4b2e1f;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            transition: color 0.3s ease;
+        }
 
-    #about h2 {
-      margin-top: 30px;
-      color: #6f4e37;
-    }
+        #about h2 {
+            margin-top: 30px;
+            color: #6f4e37;
+        }
 
-    #about ul {
-      list-style: none;
-      padding: 0;
-      margin-top: 20px;
-    }
+        #about ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
 
-    #about ul li {
-      font-size: 18px;
-      color: #5c4033;
-      margin: 8px 0;
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
+        #about ul li {
+            font-size: 18px;
+            color: #5c4033;
+            margin: 8px 0;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
 
-    #about ul li:hover {
-      color: #b08968;
-      transform: scale(1.05);
-    }
+        #about ul li:hover {
+            color: #b08968;
+            transform: scale(1.05);
+        }
 
-    /* Reviews Section */
-    section#reviews, section#submit-review {
-      max-width: 800px;
-      width: 100%;
-      background: #fff;
-      border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      text-align: center;
-      padding: 40px 20px;
-      transition: all 0.4s ease;
-      margin-bottom: 40px;
-    }
+        /* Reviews Section (Included for completeness but not visible in HTML body) */
+        section#reviews, section#submit-review {
+            max-width: 800px;
+            width: 100%;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            padding: 40px 20px;
+            transition: all 0.4s ease;
+            margin-bottom: 40px;
+        }
 
-    section#reviews h2, section#submit-review h2 {
-      font-size: 30px;
-      margin-bottom: 30px;
-      color: #6f4e37;
-    }
+        section#reviews h2, section#submit-review h2 {
+            font-size: 30px;
+            margin-bottom: 30px;
+            color: #6f4e37;
+        }
 
-    .review-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
+        .review-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
 
-    .review-card {
-      flex-basis: 300px;
-      flex-grow: 1;
-      background: #fdfaf6;
-      border: 1px solid #e6ccb2;
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-align: left;
-    }
+        .review-card {
+            flex-basis: 300px;
+            flex-grow: 1;
+            background: #fdfaf6;
+            border: 1px solid #e6ccb2;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+        }
 
-    .review-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-    }
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
 
-    .review-card .stars {
-      color: #e67e22;
-      margin-bottom: 15px;
-      font-size: 18px;
-    }
+        .review-card .stars {
+            color: #e67e22;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
 
-    .review-card p {
-      font-size: 16px;
-      line-height: 1.6;
-      color: #4b2e1f;
-    }
+        .review-card p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #4b2e1f;
+        }
 
-    .review-card .reviewer {
-      font-style: italic;
-      font-weight: 600;
-      text-align: right;
-      margin-top: 15px;
-      color: #6f4e37;
-    }
+        .review-card .reviewer {
+            font-style: italic;
+            font-weight: 600;
+            text-align: right;
+            margin-top: 15px;
+            color: #6f4e37;
+        }
 
-    /* Responsive */
-    @media(max-width: 768px){
-      header {
-        width: 100%;
-        height: auto;
-        flex-direction: row;
-        justify-content: space-between;
-        position: relative;
-        border-radius: 0 0 15px 15px;
-        min-height: auto;
-        padding: 20px;
-      }
-      nav {
-        flex-direction: row;
-        gap: 15px;
-      }
-      main {
-        margin-left: 0;
-        width: 100%;
-        padding: 20px 10px;
-      }
-      section#about, section#reviews, section#submit-review {
-        margin-bottom: 20px;
-        padding: 25px;
-      }
-      .review-card {
-        flex-basis: 100%;
-      }
-    }
+        /* Submit Review Form */
+        #submit-review input, #submit-review select, #submit-review textarea {
+            width: 80%;
+            padding: 8px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        #submit-review button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #6f4e37;
+            color: white;
+            cursor: pointer;
+        }
 
-    /* Submit Review Form */
-    #submit-review input, #submit-review select, #submit-review textarea {
-      width: 80%;
-      padding: 8px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-    #submit-review button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      background: #6f4e37;
-      color: white;
-      cursor: pointer;
-    }
-  </style>
+        /* ======================================= */
+        /* === MOBILE RESPONSIVENESS FIX (768px) === */
+        /* ======================================= */
+        @media(max-width: 768px){
+            /* Fixes the Header (Sidebar) to stack on top */
+            header {
+                /* Overrides the 'position: fixed' from the desktop style */
+                position: relative !important; 
+                width: 100% !important; /* Takes full width of the screen */
+                min-height: auto !important;
+                /* Ensures content flows correctly */
+                flex-direction: row; 
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
+                border-radius: 0 0 15px 15px;
+            }
+
+            /* Adjusts the Logo */
+            .logo {
+                font-size: 24px;
+                margin-bottom: 0;
+            }
+
+            /* Adjusts the Navigation links */
+            nav {
+                flex-direction: row; /* Horizontal links */
+                flex-wrap: wrap; /* Allows links to wrap if too many */
+                gap: 15px;
+                width: auto;
+                margin-top: 0;
+            }
+            
+            nav a {
+                padding: 5px 10px;
+                font-size: 16px;
+            }
+
+            /* Fixes the Main Content overlap */
+            main {
+                margin-left: 0 !important; /* Removes the sidebar offset */
+                width: 100% !important; /* Allows it to take full screen width */
+                padding: 20px 15px;
+            }
+
+            section#about, section#reviews, section#submit-review {
+                margin-bottom: 20px;
+                padding: 25px;
+            }
+
+            .review-card {
+                flex-basis: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <div class="logo">AMIO'Z WORLD</div>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="checkout.html" style="margin-left: 30px; text-decoration: none; color: white;">
-            <i class="fas fa-shopping-cart"></i> 
-            <span id="cart-count" style="background-color: #ffe0b2; color: #6d4c41; border-radius: 50%; padding: 2px 7px; font-size: 14px; position: relative; top: -10px; left: -5px; font-weight: bold;">0</span>
-        </a>
-    </nav>
-  </header>
-  
-  <main>
-    <!-- About Section -->
-    <section id="about">
-      <h1>About Us</h1>
-      <p>Welcome to AMIO'Z WORLD! Our Kolhapuri chappals are handmade by skilled artisans, combining tradition, comfort, and style in every pair.</p>
-      <p>Our mission is to bring authentic, high-quality chappals to customers who value craftsmanship and elegance.</p>
-      <h2>Why Choose Us?</h2>
-      <ul>
-        <li>100% Handmade</li>
-        <li>Premium Quality Leather</li>
-        <li>Affordable Prices</li>
-        <li>Fast & Reliable Delivery</li>
-      </ul>
-      <p>We are passionate about delivering a seamless shopping experience. Thank you for trusting us with your style!</p>
-    </section>
+    <header>
+        <div class="logo">AMIO'Z WORLD</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="checkout.html" style="margin-left: 30px; text-decoration: none; color: white;">
+                <i class="fas fa-shopping-cart"></i> 
+                <span id="cart-count" style="background-color: #ffe0b2; color: #6d4c41; border-radius: 50%; padding: 2px 7px; font-size: 14px; position: relative; top: -10px; left: -5px; font-weight: bold;">0</span>
+            </a>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="about">
+            <h1>About Us</h1>
+            <p>Welcome to AMIO'Z WORLD! Our Kolhapuri chappals are handmade by skilled artisans, combining tradition, comfort, and style in every pair.</p>
+            <p>Our mission is to bring authentic, high-quality chappals to customers who value craftsmanship and elegance.</p>
+            <h2>Why Choose Us?</h2>
+            <ul>
+                <li>100% Handmade</li>
+                <li>Premium Quality Leather</li>
+                <li>Affordable Prices</li>
+                <li>Fast & Reliable Delivery</li>
+            </ul>
+            <p>We are passionate about delivering a seamless shopping experience. Thank you for trusting us with your style!</p>
+        </section>
 
-   
-
-  
+        </main>
 </body>
 </html>
