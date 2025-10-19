@@ -30,7 +30,7 @@
             100% { background-position: 0% 50%; }
         }
     
-        /* Sidebar (Header) */
+        /* Sidebar (Header) - DESKTOP STYLES */
         header {
             background: linear-gradient(180deg, #6d4c41, #8d6e63, #a1887f);
             color: #fff;
@@ -70,17 +70,18 @@
             color: #ffe0b2;
         }
     
-        /* Main Content Area - CRUCIAL FIX HERE */
+        /* Main Content Area - DESKTOP STYLES */
         main {
             margin-left: 270px; /* <-- Pushes content past the sidebar */
             padding: 40px;
             flex: 1;
             width: 100%; 
+            box-sizing: border-box; /* Ensures padding doesn't affect width calculation */
         }
     
         /* --- CHECKOUT SPECIFIC STYLES --- */
         .checkout-container {
-            max-width: 900px; /* Adjusted max-width for better centering */
+            max-width: 900px;
             margin: 0 auto;
             background: rgba(255, 255, 255, 0.95);
             padding: 40px;
@@ -125,7 +126,6 @@
             margin-top: 0;
         }
         
-        /* ADDED: Styling for summary paragraphs */
         .cart-summary p {
             display: flex;
             justify-content: space-between;
@@ -133,7 +133,6 @@
             margin: 10px 0;
         }
 
-        /* ADDED: Styling for the Total row */
         .cart-summary .total {
             font-size: 20px;
             font-weight: bold;
@@ -181,6 +180,84 @@
         #checkout-button:disabled {
             background: #ccc;
             cursor: not-allowed;
+        }
+
+        /* ======================================= */
+        /* === MOBILE RESPONSIVENESS FIX (768px) === */
+        /* ======================================= */
+        @media(max-width: 768px) {
+            /* Fixes the Header (Sidebar) to stack on top */
+            body {
+                /* Ensures header and main stack vertically */
+                flex-direction: column; 
+            }
+            
+            header {
+                position: relative !important; /* Overrides the 'position: fixed' */
+                width: 100% !important; 
+                min-height: auto !important;
+                border-radius: 0;
+                /* New layout for mobile header: logo on left, links/cart on right */
+                flex-direction: row; 
+                flex-wrap: wrap; 
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
+                box-sizing: border-box; 
+            }
+            
+            .logo {
+                margin-bottom: 0 !important;
+                font-size: 24px;
+            }
+
+            nav {
+                /* Links are horizontal and wrap */
+                flex-direction: row; 
+                flex-wrap: wrap; 
+                gap: 10px;
+                margin-top: 10px; 
+                width: 100%; /* forces nav to take full width below logo */
+                justify-content: space-around;
+            }
+            
+            nav a[href="checkout.html"] {
+                /* Ensure the cart link styles correctly in the horizontal nav */
+                margin-left: 0 !important; 
+                margin-top: 0 !important;
+            }
+            
+            /* Fixes the Main Content overlap */
+            main {
+                margin-left: 0 !important; /* Removes the desktop sidebar offset */
+                padding: 20px;
+            }
+            
+            .checkout-container {
+                padding: 20px;
+                flex-direction: column; /* Stacks cart and summary vertically */
+            }
+            
+            .cart-summary {
+                min-width: 100%; /* Makes summary full width when stacked */
+                order: -1; /* Puts the summary block *above* the cart items on mobile (optional, but often looks better) */
+                position: relative; /* Removes sticky positioning on mobile */
+                top: 0;
+            }
+            
+            .cart-items-container {
+                min-width: 100%;
+            }
+            
+            .cart-item {
+                flex-direction: column; /* Stack item details vertically */
+                align-items: flex-start;
+                gap: 10px;
+                padding: 15px;
+                border: 1px solid #d7ccc8;
+                border-radius: 8px;
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
